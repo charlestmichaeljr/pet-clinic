@@ -3,16 +3,17 @@
     <parent>
         <artifactId>pet-clinic</artifactId>
         <groupId>com.charlie</groupId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.4-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>pet-clinic-web</artifactId>
+  <version>0.0.4-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <artifactId>pet-clinic-data</artifactId>
             <groupId>com.charlie</groupId>
-            <version>0.0.2-SNAPSHOT</version>
+            <version>0.0.4-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,6 +39,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-
 </project>
