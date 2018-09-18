@@ -1,15 +1,11 @@
 package com.charlie.petclinic.bootstrap;
 
 import com.charlie.petclinic.model.*;
-import com.charlie.petclinic.services.OwnerService;
-import com.charlie.petclinic.services.PetTypeService;
-import com.charlie.petclinic.services.SpecialtyService;
-import com.charlie.petclinic.services.VetService;
+import com.charlie.petclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -18,12 +14,14 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -106,6 +104,26 @@ public class DataLoader implements CommandLineRunner {
         ownerService.save(owner2);
 
         System.out.println("Dogs loaded");
+
+        Visit dogVisit1 = new Visit();
+        dogVisit1.setDescription("Distemper Shot");
+        dogVisit1.setPet(sassy);
+        dogVisit1.setDate(LocalDate.now());
+
+        visitService.save(dogVisit1);
+
+        Visit dogVisit2 = new Visit();
+        dogVisit2.setDescription("Heartworm treatment");
+        dogVisit2.setPet(barkley);
+        dogVisit2.setDate(LocalDate.now());
+
+        visitService.save(dogVisit2);
+
+        //sassy.getVisits().add(dogVisit1);
+
+        //barkley.getVisits().add(dogVisit2);
+
+        System.out.println("Visits loaded");
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Steve");
