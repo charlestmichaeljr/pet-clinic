@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-@Profile("springjpadata")
+@Profile("springdatajpa")
 public class VisitJPAService implements VisitService {
 
     private final VisitRepository visitRepository;

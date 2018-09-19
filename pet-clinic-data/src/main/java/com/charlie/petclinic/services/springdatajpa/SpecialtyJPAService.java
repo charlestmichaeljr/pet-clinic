@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-@Profile("springjpadata")
+@Profile("springdatajpa")
 public class SpecialtyJPAService implements SpecialtyService {
 
     private final SpecialtyRepository specialtyRepository;
@@ -27,22 +27,22 @@ public class SpecialtyJPAService implements SpecialtyService {
     }
 
     @Override
-    public Specialty findById(Integer integer) {
-        return null;
+    public Specialty findById(Integer id) {
+        return specialtyRepository.findById(id).orElse(null);
     }
 
     @Override
     public Specialty save(Specialty object) {
-        return null;
+        return specialtyRepository.save(object);
     }
 
     @Override
     public void delete(Specialty object) {
-
+        specialtyRepository.delete(object);
     }
 
     @Override
-    public void deleteById(Integer integer) {
-
+    public void deleteById(Integer id) {
+        specialtyRepository.deleteById(id);
     }
 }
